@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Daisy Ui -->
+    <!-- Daisy Ui CDN-->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
 
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS CDN-->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-    <!-- font-awesome -->
+    <!-- font-awesome CDN-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Poppins Font Embed code -->
@@ -23,12 +23,71 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="styple/style.css">
     <title>English Janala</title>
 </head>
 <body>
-    
+    <header>
+        <div class="navbar bg-base-100 shadow-sm">
+            <div class="navbar-start">
+                <div class="dropdown">
+                  <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+                    </div>
+                      <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                        <li><a href="#" ><i class="fa-solid fa-circle-question"></i>FAQ</a></li>
+                        <li><a href="#" ><i class="fa-solid fa-book-open"></i>Learn</a></li>
+                        <li><a href="#" ><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></li>
+                      </ul>
+                </div>
+
+                <a href="" class="flex items-center gap-1"> 
+                    <span class="font-bold text-lg">English</span>
+                    <img src="assets/logo.png" alt="">
+                    <span class="font-Bangla font-semibold text-lg">জানালা</span>
+                </a>
+            </div>
+
+            <div class="navbar-end hidden lg:flex">
+                <ul class="menu menu-horizontal px-1 space-x-4">
+                  <li><a href="" class="btn btn-outline btn-primary"><i class="fa-solid fa-circle-question"></i>FAQ</a></li>
+                  <li><a href="" class="btn btn-outline btn-primary"><i class="fa-solid fa-book-open"></i>Learn</a></li>
+                  <li><a href="" class="btn btn-outline btn-primary"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></li>
+              </ul>
+            </div>
+        </div>
+    </header>
+    <main>
+      <!-- Banner section -->
+      <section class="flex items-center justify-between py-5 w-11/12 mx-auto gap-8 flex-col-reverse md:flex-row">
+        <div class="flex-1 text-center md:text-left">
+          <h2 class="text-4xl font-bold mb-6"><span class="text-[#00BCFF]">English</span> is Easy!!</h2>
+          <p class="font-Bangla md:w-[40vw] mb-5">আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা আপনার দক্ষতা বাড়াতে চান, আমাদের Interactive Lessons আপনাকে নিয়ে যাবে অন্য একটি Level এ</p>
+        <div class="w-[70%] mx-auto md:w-[55%] md:mx-0 md:ml-0">
+          <div class="relative mb-3">
+            <i class="fa-regular fa-user absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+            <input type="text" placeholder="Username" class="pl-10 border-1 border-gray-300 rounded-[0.5rem] w-full py-2 cursor-pointer">
+          </div>
+          <div class="relative mb-3">
+            <i class="fa-solid fa-key absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+            <input type="password" placeholder="Password" class="pl-10 pr-4 border border-gray-300 rounded-[0.5rem] w-full py-2 cursor-pointer">
+          </div>
+          <div><button class="btn btn-primary">Get Started</button></div>
+        </div>
+        </div>
+        <div class="flex-1">
+          <img src="assets/hero-student.png" alt="">
+        </div>
+      </section>
+      <!-- Learn Vocabularies -->
+      <section>
+        
+      </section>
+    </main>
+
 </body>
 </html>
-<!-- Initialize project with basic setup -->
-<!-- Poppins    font-family: "Poppins", sans-serif; -->
-<!-- Hind Siliguri         font-family: "Hind Siliguri", sans-serif; -->
