@@ -32,7 +32,7 @@
 </head>
 <body>
     <header>
-        <div class="navbar bg-base-100 shadow-sm">
+        <div class="navbar bg-base-100 shadow-sm md:px-8 md:py-4">
             <div class="navbar-start">
                 <div class="dropdown">
                   <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -84,17 +84,39 @@
         </div>
       </section>
 
-      <!-- Learn Vocabularies -->
+      <!-- Lesson button -->
       <section class="mt-6">
         <h2 class="text-4xl font-bold text-center mb-7"><span class="text-[#00BCFF]">Let's</span> Learn Vocabularies</h2>
         <div id="Lesson-container" class="flex gap-4 justify-center flex-wrap">
         </div>
       </section>
 
-      <!--  -->
-      <section id="word-container">
-
+      <!-- Lesson all card -->
+      <section id="word-container" class="grid grid-cols-3 gap-4 bg-[#eeeeee98] p-10 w-11/12 mx-auto my-5 rounded-[1rem]">
+      <div class="text-center rounded-2xl col-span-full font-Bangla">
+        <p class="mt-12 mb-10 text-[#79716b]">আপনি এখনো কোন Lesson Select করেননি</p>
+        <h3 class="mb-12 text-4xl font-bold text-black">একটি Lesson Select করুন।</h3>
+      </div>
       </section>
+
+      <!-- Modal -->
+      <section>
+        <!-- Open the modal using ID.showModal() method -->
+        <button class="btn" onclick="my_modal_5.showModal()">open modal</button>
+        <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+          <div class="modal-box">
+            <h3 class="text-lg font-bold">Hello!</h3>
+            <p class="py-4">Press ESC key or click the button below to close</p>
+            <div class="modal-action">
+              <form method="dialog">
+                <!-- if there is a button in form, it will close the modal -->
+                <button class="btn">Close</button>
+              </form>
+            </div>
+          </div>
+        </dialog>
+      </section>
+
     </main>
   <script src="script/script.js"></script>
 </body>
