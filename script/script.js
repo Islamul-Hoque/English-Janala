@@ -1,9 +1,15 @@
-const createSpan= (arr)=>{
+const createSpan= (arr)=>{  //span tag for synonyms  
     const htmlSpan = arr.map(el => `<span class="btn bg-[#EDF7FF] rounded-[0.6rem] mr-2">${el} </span>`)
     return htmlSpan.join(' ');
 }
 
-const manageSpinner = (status)=>{
+function pronounceWord(word) {  // voice functionality
+    const utterance = new SpeechSynthesisUtterance(word);
+    utterance.lang = "en-EN"; // English
+    window.speechSynthesis.speak(utterance);
+}
+
+const manageSpinner = (status)=>{  // spinner add/remove 
     if(status == true){
         document.getElementById('spinner').classList.remove('hidden')
         document.getElementById('word-container').classList.add('hidden')
@@ -14,24 +20,26 @@ const manageSpinner = (status)=>{
     }
 }
 
-const loadLesson=()=>{
+const loadLesson=()=>{  // search word json file
     fetch('https://openapi.programming-hero.com/api/levels/all')
     .then(res=>res.json())
     .then(json=>displayLesson(json.data))
 }
 
-const removeActive=()=>{
+const removeActive=()=>{  //Button active/ deactive functionality
     const lessonBtns = document.querySelectorAll('.lesson-btn')
     lessonBtns.forEach(btn=> btn.classList.remove('active'))
 }
 
-const loadLevelWord =(id)=>{
-    manageSpinner(true);
+const loadLevelWord =(id)=>{  // Add vocabularies to selected lesson via button click
+    manageSpinner(true);  // Spinner add
+
     const url = `https://openapi.programming-hero.com/api/level/${id}`
     fetch(url)
     .then(res => res.json())
     .then(data => {
         removeActive();  //remove all active class
+
         const clickBtn = document.getElementById(`lesson-btn-${id}`);
         clickBtn.classList.add('active') //add active class
 
@@ -84,7 +92,8 @@ const displayLevelwords=(words)=>{
             <h3 class="text-4xl font-bold text-black">নেক্সট Lesson এ যান</h3>
         </div>
         `
-        manageSpinner(false);
+
+        manageSpinner(false); // Spinner add
         return 
     }
 
@@ -99,7 +108,7 @@ const displayLevelwords=(words)=>{
             </div>
             <div class="flex justify-between items-center px-[1rem] mt-4">
                 <button onclick="loadWordDetails(${word.id})" class="btn border-none bg-[#1a91ff1a] hover:bg-[#2a83d66e] py-2 rounded-lg"><i class="fa-solid fa-circle-info text-[#374957]"></i></button>
-                <button class="btn border-none bg-[#1a91ff1a] hover:bg-[#2a83d66e] py-2 rounded-lg"><i class="fa-solid fa-volume-high text-[#374957]"></i></button>
+                <button onclick="pronounceWord('${word.word}')" class="btn border-none bg-[#1a91ff1a] hover:bg-[#2a83d66e] py-2 rounded-lg"><i class="fa-solid fa-volume-high text-[#374957]"></i></button>
             </div>
         </div>
         `
@@ -109,9 +118,10 @@ const displayLevelwords=(words)=>{
     
 }
 
-const displayLesson=(lessons)=>{
+const displayLesson=(lessons)=>{  // Lesson button Number load
     const lessonContainer = document.getElementById('Lesson-container');
-    lessonContainer.innerHTML = '';
+    lessonContainer.innerHTML = '';  // lessonContainer empty
+
     lessons.forEach(lesson => {
         const lessonBody = document.createElement('div');
         lessonBody.innerHTML = `
@@ -124,7 +134,7 @@ const displayLesson=(lessons)=>{
 
 loadLesson();
 
-document.getElementById('btn-search').addEventListener('click', ()=> {
+document.getElementById('btn-search').addEventListener('click', ()=> {  // Match Input display kora
     removeActive(); // Search korle button er active class off hobe 
 
     const input = document.getElementById('input search');
