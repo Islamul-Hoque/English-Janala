@@ -14,7 +14,6 @@ const manageSpinner = (status)=>{
     }
 }
 
-
 const loadLesson=()=>{
     fetch('https://openapi.programming-hero.com/api/levels/all')
     .then(res=>res.json())
@@ -73,7 +72,6 @@ const displayWordDetails = (word)=>{
     document.getElementById('Word_modal').showModal();
 }
 
-
 const displayLevelwords=(words)=>{
     const wordContainer = document.getElementById('word-container');
     wordContainer.innerHTML = '';
@@ -125,3 +123,17 @@ const displayLesson=(lessons)=>{
 }
 
 loadLesson();
+
+document.getElementById('btn-search').addEventListener('click', ()=> {
+    removeActive(); // Search korle button er active class off hobe 
+
+    const input = document.getElementById('input search');
+    const searchValue = input.value.trim().toLowerCase();
+    fetch('https://openapi.programming-hero.com/api/words/all')
+    .then(res => res.json())
+    .then(data => {
+        const allWord = data.data;
+        const filterWords = allWord.filter(word => word.word.toLowerCase().includes(searchValue))
+        displayLevelwords(filterWords);  // Search gola display te dekhabe 
+    })
+})
