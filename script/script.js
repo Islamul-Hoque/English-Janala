@@ -9,6 +9,7 @@ function pronounceWord(word) {  // voice functionality
     window.speechSynthesis.speak(utterance);
 }
 
+
 const manageSpinner = (status)=>{  // spinner add/remove 
     if(status == true){
         document.getElementById('spinner').classList.remove('hidden')
