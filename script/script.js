@@ -138,13 +138,39 @@ loadLesson();
 document.getElementById('btn-search').addEventListener('click', ()=> {  // Match Input display kora
     removeActive(); // Search korle button er active class off hobe 
 
-    const input = document.getElementById('input search');
+    const input = document.getElementById('input-search');
     const searchValue = input.value.trim().toLowerCase();
+
+    // যদি input খালি হয়
+    if(searchValue === ''){
+        const wordContainer = document.getElementById('word-container');
+        wordContainer.innerHTML = `
+        <div class="text-center rounded-2xl col-span-full font-Bangla my-10">
+            <p class="text-[#79716b] mb-4">আপনি কিছু লিখেননি।</p>
+            <h3 class="text-4xl font-bold text-black">অনুগ্রহ করে search box-এ শব্দ লিখুন।</h3>
+        </div>
+        `;
+        return;  // fetch হবে না
+    }
+
     fetch('https://openapi.programming-hero.com/api/words/all')
     .then(res => res.json())
     .then(data => {
         const allWord = data.data;
         const filterWords = allWord.filter(word => word.word.toLowerCase().includes(searchValue))
+
+        // যদি filterWords খালি হয়
+        if(filterWords.length === 0){
+            const wordContainer = document.getElementById('word-container');
+            wordContainer.innerHTML = `
+            <div class="text-center rounded-2xl col-span-full font-Bangla my-10">
+                <p class="text-[#79716b] mb-4">কোনো ফলাফল পাওয়া যায়নি।</p>
+                <h3 class="text-4xl font-bold text-black">ভিন্ন শব্দ চেষ্টা করুন।</h3>
+            </div>
+            `;
+            return;
+        }
+
         displayLevelwords(filterWords);  // Search gola display te dekhabe 
     })
 })
